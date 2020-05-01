@@ -22,3 +22,16 @@ pluginBundle {
 	vcsUrl = 'https://github.com/epitschke/gradle-file-versioning'
 	tags = ['version', 'versioning', 'semantiv-versioning']
 }
+
+
+
+gradlePlugin {
+	plugins {
+		FileVersioningPlugin {
+			id = 'de.epitschke.gradle-file-versioning'
+			displayName = 'Gradle File Versioning'
+			description = 'Handle the project versioning in an external version file.'
+			implementationClass = 'de.epitschke.gradle.fileversioning.FileVersioningPlugin'
+		}
+	}
+}
