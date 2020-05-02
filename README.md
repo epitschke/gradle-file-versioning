@@ -6,6 +6,11 @@ The versioning follows the [semantic versioning](https://semver.org/).
 ## Usage
 
 To use the plugin's functionality, you will need to add the its binary artifact to your build script's classpath and apply the plugin.
+```
+plugins {
+  id "de.epitschke.gradle-file-versioning" version "1.0.0"
+}
+```
 
 ## version.txt file
 

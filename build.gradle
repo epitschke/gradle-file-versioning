@@ -23,8 +23,6 @@ pluginBundle {
 	tags = ['version', 'versioning', 'semantiv-versioning']
 }
 
-
-
 gradlePlugin {
 	plugins {
 		FileVersioningPlugin {
