@@ -57,6 +57,20 @@ Removes the pre-release from the version. Example:
 0.0.3
 ```
 
+### setVersion
+
+Set the version direct from the command line. Example:
+
+```
+> cat version.txt
+0.0.1
+> ./gradlew -q setVersion -PnewVersion=0.2.3
+> cat version.txt
+0.2.3
+```
+
+The command line parameter in this context is always 'newVersion'.
+
 ## Personal usage
 
 I personally use the plugin to easily handle the version in combination with git flow.
