@@ -38,9 +38,26 @@ class FileVersioningPlugin implements Plugin<Project> {
     //Register Tasks
     this.applyTaskSnapshot(project)
     this.applyTaskResetPreRelease(project)
+	this.applyTaskSetVersion(project)
 
     // Register rules
     this.applyRuleBump(project)
+  }
+
+  private void applyTaskSetVersion(final Project project) {
+    project.task('setVersion') {
+      group 'Version'
+      description 'Set Version via command line. e.g. "./gradlew -q setVersion -PnewVersion=0.1.2"'
+
+      doLast {
+        if(!project.properties['newVersion']) {
+          LOG.error('No new version given. Please call this task with a new version (e.g. "./gradlew -q setVersion -PnewVersion=0.1.2")')
+        } else {
+          final Version newVersion = new Version(project.properties['newVersion'])
+          this.writeVersionToFile(newVersion)
+        }
+      }
+    }
   }
 
   private void applyTaskResetPreRelease(final Project project) {
