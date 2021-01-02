@@ -20,7 +20,7 @@ dependencies {
 pluginBundle {
 	website = 'https://github.com/epitschke/gradle-file-versioning'
 	vcsUrl = 'https://github.com/epitschke/gradle-file-versioning'
-	tags = ['version', 'versioning', 'semantiv-versioning']
+	tags = ['version', 'versioning', 'semantic-versioning']
 }
 
 gradlePlugin {
