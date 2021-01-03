@@ -8,7 +8,7 @@ The versioning follows the [semantic versioning](https://semver.org/).
 To use the plugin's functionality, you will need to add the its binary artifact to your build script's classpath and apply the plugin.
 ```
 plugins {
-  id "de.epitschke.gradle-file-versioning" version "1.0.0"
+  id "de.epitschke.gradle-file-versioning" version "1.1.0"
 }
 ```
 
@@ -56,6 +56,20 @@ Removes the pre-release from the version. Example:
 > cat version.txt
 0.0.3
 ```
+
+### setVersion
+
+Set the version direct from the command line. Example:
+
+```
+> cat version.txt
+0.0.1
+> ./gradlew -q setVersion -PnewVersion=0.2.3
+> cat version.txt
+0.2.3
+```
+
+The command line parameter in this context is always 'newVersion'.
 
 ## Personal usage
 
