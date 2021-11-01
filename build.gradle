@@ -1,22 +1,31 @@
 plugins {
 	id 'java-gradle-plugin'
 	id 'groovy'
-	id 'com.gradle.plugin-publish' version '0.11.0'
+	id 'com.gradle.plugin-publish' version '0.16.0'
 }
 
 repositories {
 	mavenCentral()
 }
 
-version = '1.1.0'
+version = '1.2.0'
 group = 'de.epitschke.gradle'
-sourceCompatibility = 1.11
-targetCompatibility = 1.11
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+// Seems like this issue: https://github.com/gradle/gradle/issues/17236
+rootProject.tasks.named("processResources") {
+    duplicatesStrategy = 'include'
+}
 
 dependencies {
 	implementation gradleApi()
 	implementation localGroovy()
-	testCompile 'org.spockframework:spock-core:1.3-groovy-2.5'
+	testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
 }
 
 pluginBundle {
