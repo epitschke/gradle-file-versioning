@@ -83,7 +83,7 @@ Example:
 
 ```groovy
 ext {
-	someUrl = "http://foo/${de.epitschke.gradle.fileversioning.getVersionFromFile().endsWith('SNAPSHOT') ? "snapshot" : "release"}"
+	someUrl = "http://foo/${de.epitschke.gradle.fileversioning.FileVersioningPlugin.getVersionFromFile().endsWith('SNAPSHOT') ? "snapshot" : "release"}"
 }
 ```
 
