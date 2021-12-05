@@ -71,18 +71,44 @@ Set the version direct from the command line. Example:
 
 The command line parameter in this context is always 'newVersion'.
 
+## Helper methods
+
+### getVersionFromFile
+
+This plugin sets the current version after evaluation of the project.
+But sometimes you may need the information beforehand - e.g. when using in an ext block.
+In this case it is possible to use the static method "getVersionFromFile".
+Example:
+
+```groovy
+ext {
+	someUrl = "http://foo/${de.epitschke.gradle.fileversioning.getVersionFromFile().endsWith('SNAPSHOT') ? "snapshot" : "release"}"
+}
+```
+
+---
+**NOTE**
+
+If there is no version.txt file the method will return null.
+
+---
+
 ## Personal usage
 
 I personally use the plugin to easily handle the version in combination with git flow.
 Let's say on my development branch the version '0.1.2-SNASPHOT'.
 After i start a release with git flow i will call 
+
 ```
 ./gradlew -q resetPrerelease
 ```
+
 on the release branch.
 After the release is finished i call the following tasks to apply the '-SNAPSHOT' and bump the version:
+
 ```
 ./gradlew -q bumpPatch
 ./gradlew -q applySnapshot
 ```
+
 Now the master branch has the version '0.1.2' and the development branch has the version '0.1.3-SNASPHOT'.

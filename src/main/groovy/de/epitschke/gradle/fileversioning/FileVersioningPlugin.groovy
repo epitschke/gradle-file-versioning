@@ -30,6 +30,19 @@ class FileVersioningPlugin implements Plugin<Project> {
   private static final Logger LOG = LoggerFactory.getLogger(FileVersioningPlugin.class)
   private static final String BUMP_RULE_PREFIX = "BUMP"
   private boolean active = true
+  
+  /**
+   * Read the current version from the version file. Will return null if the file does not exist.
+   * 
+   * @return The version string or null if the file does not exist.
+   */
+  public static String getVersionFromFile() {
+    final File versionFile = internalGetVersionFile()
+    if(!versionFile.exists()) {
+      return null
+    }
+    return new Version(versionFile.text).toString()
+  }
 
   @Override
   public void apply(final Project project) {
@@ -135,6 +148,10 @@ class FileVersioningPlugin implements Plugin<Project> {
   }
 
   private File getVersionFile() {
+    return internalGetVersionFile()
+  }
+  
+  private static File internalGetVersionFile() {
     return new File('./version.txt')
   }
 }
